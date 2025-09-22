@@ -6,6 +6,7 @@ import views.HomeView;
 import views.NewEventView;
 import views.RemoveEvent;
 import controllers.RemoveEventController;
+import views.RegisterGuestView ; // se importa de la vista para que vaya al homeview
 import models.SchedulerIO;
 
 
@@ -22,7 +23,10 @@ public class HomeController extends Controller
         private SchedulerIO schedulerIO = new SchedulerIO();
 	private EventListController eventListController = new EventListController();
 	private NewEventController newEventController = new NewEventController(eventListController);
-	private RemoveEventController removeEventController = new RemoveEventController(schedulerIO);
+	// no se como explicarlo, pero todo es una cadena, osea si dice en uno
+        // tiene que estar en el otro, todo se conecta, like spaiderman
+        private RemoveEventController removeEventController = new RemoveEventController(schedulerIO);
+        private RegisterGuestController registerGuestController = new RegisterGuestController(schedulerIO);
 
 
 	
@@ -59,9 +63,16 @@ public class HomeController extends Controller
 	{
 		return newEventController.getView();
         }
+        // se añadio del remove
         public RemoveEvent getRemoveEventView()
         {
                  return removeEventController.getView();
 }
+        // se añade del registrar
+        public RegisterGuestView getRegisterGuestView() {
+                 return registerGuestController.getView();
+}
 
-	}
+}
+
+	

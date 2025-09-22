@@ -126,7 +126,7 @@ public class SchedulerIO implements Model
     }
 }
                 //añadimos el save guest ya que este recibe y guarda
-                //si o si va aca
+                //si o si va aca ya que guarda y lee invitados desde el archivo
     public void saveGuest(Guest guest) throws Exception {
     BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DIRECTORY, "guests.txt"), true));
     writer.write(guest.toString());
