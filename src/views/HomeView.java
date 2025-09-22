@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import controllers.HomeController;
 import core.Model;
 import core.View;
+import models.SchedulerIO;
 
 
 /**
@@ -80,6 +81,9 @@ public class HomeView extends JPanel implements View
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("New event", homeController.getNewEventView());
 		tabbedPane.addTab("Events", homeController.getEventListView());
-		add(tabbedPane, BorderLayout.CENTER);
-	}
+                tabbedPane.addTab("Remove Event", homeController.getRemoveEventView());
+
+
+                add (tabbedPane, BorderLayout.CENTER);
+        }
 }

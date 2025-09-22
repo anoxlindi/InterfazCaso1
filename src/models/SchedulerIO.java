@@ -63,6 +63,7 @@ public class SchedulerIO implements Model
 			BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DIRECTORY, FILE), true));
 			writer.write(event.toString(), 0, event.toString().length());
 			writer.newLine();
+                        writer.flush();
 			writer.close();
 		} catch (FileNotFoundException fnfe) {
 			notice = "File not found"; 
@@ -110,5 +111,23 @@ public class SchedulerIO implements Model
 		}
 		
 		return response;
-	}
+        }
+                public void overwriteEvents(Vector<Vector<Object>> eventos) throws Exception {
+    try {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DIRECTORY, FILE), false)); // false = sobrescribir
+
+        for (Vector<Object> evento : eventos) {
+            String linea = evento.get(0) + ";" + evento.get(1) + ";" + evento.get(2).toString() + ";" +
+                           evento.get(3) + ";" + (evento.get(4).equals("ON") ? "1" : "0");
+            writer.write(linea);
+            writer.newLine();
+        }
+
+        writer.close();
+    } catch (Exception ex) {
+        notice = "Error while overwriting the file";
+        notifyViews();
+    }
 }
+
+	}
