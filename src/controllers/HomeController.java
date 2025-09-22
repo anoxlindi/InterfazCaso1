@@ -10,6 +10,7 @@ import java.awt.Component;
 import views.RegisterGuestView ; // se importa de la vista para que vaya al homeview
 import models.SchedulerIO;
 import views.GuestListView; // importamos al guestList de vista
+import views.SearchEventView; // importamos el search view del mismo vie
 
 
 public class HomeController extends Controller 
@@ -27,8 +28,9 @@ public class HomeController extends Controller
         private RegisterGuestController registerGuestController = new RegisterGuestController(schedulerIO);
         // private ahora para el guest list view que lo mencionaremos abajo
         private GuestListView guestListView = new GuestListView(schedulerIO);
-
-
+        // ahora buscamos para el search event
+        private SearchEventView searchEventView = new SearchEventView();
+        
 	
 	//-----------------------------------------------------------------------
 	//		Methods
@@ -75,5 +77,9 @@ public class HomeController extends Controller
         // se añade la lista de guest
         public GuestListView getGuestListView() {
                  return guestListView;
+        }
+        // ahora para el get seacrh event
+        public SearchEventView getSearchEventView() {
+                return searchEventView;
         }
 }

@@ -26,8 +26,8 @@ public class HomeView extends JPanel implements View
 	@SuppressWarnings("unused")
 	private HomeController homeController;
 	private JFrame mainFrame;
-	private final static int MAIN_FRAME_WIDTH = 500;
-	private final static int MAIN_FRAME_HEIGHT = 350;
+	private final static int MAIN_FRAME_WIDTH = 700;
+	private final static int MAIN_FRAME_HEIGHT = 400;
 	private final static int MAIN_FRAME_X = 100;
 	private final static int MAIN_FRAME_Y = 100;
 	
@@ -84,6 +84,7 @@ public class HomeView extends JPanel implements View
                 tabbedPane.addTab("Remove Event", homeController.getRemoveEventView());
                 tabbedPane.addTab("Registrar invitado", homeController.getRegisterGuestView());
                 tabbedPane.addTab("Invitados", homeController.getGuestListView());
+                tabbedPane.addTab("Buscar evento", homeController.getSearchEventView());
                 add (tabbedPane, BorderLayout.CENTER);
         }
 }
