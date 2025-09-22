@@ -74,11 +74,7 @@ public class SchedulerIO implements Model
 		}
 	}
 
-	/**
-	 * Reads a {@link SchedulerEvent} saved in disk with name {@link #FILE}.
-	 * @return List of lists (matrix) of the events
-	 * @throws Exception If it can't read event file
-	 */
+
 	public Vector<Vector<Object>> getEvents() throws Exception 
 	{
 		Vector<Vector<Object>> response = new Vector<Vector<Object>>();
@@ -128,6 +124,15 @@ public class SchedulerIO implements Model
         notice = "Error while overwriting the file";
         notifyViews();
     }
+}
+                //añadimos el save guest ya que este recibe y guarda
+                //si o si va aca
+    public void saveGuest(Guest guest) throws Exception {
+    BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DIRECTORY, "guests.txt"), true));
+    writer.write(guest.toString());
+    writer.newLine();
+    writer.flush();
+    writer.close();
 }
 
 	}
