@@ -6,14 +6,12 @@ import views.HomeView;
 import views.NewEventView;
 import views.RemoveEvent;
 import controllers.RemoveEventController;
+import java.awt.Component;
 import views.RegisterGuestView ; // se importa de la vista para que vaya al homeview
 import models.SchedulerIO;
+import views.GuestListView; // importamos al guestList de vista
 
 
-
-/**
- * Main controller. It will be responsible for program's main screen behavior.
- */
 public class HomeController extends Controller 
 {
 	//-----------------------------------------------------------------------
@@ -27,6 +25,8 @@ public class HomeController extends Controller
         // tiene que estar en el otro, todo se conecta, like spaiderman
         private RemoveEventController removeEventController = new RemoveEventController(schedulerIO);
         private RegisterGuestController registerGuestController = new RegisterGuestController(schedulerIO);
+        // private ahora para el guest list view que lo mencionaremos abajo
+        private GuestListView guestListView = new GuestListView(schedulerIO);
 
 
 	
@@ -68,11 +68,12 @@ public class HomeController extends Controller
         {
                  return removeEventController.getView();
 }
-        // se añade del registrar
+        // se añade del registrar guest
         public RegisterGuestView getRegisterGuestView() {
                  return registerGuestController.getView();
 }
-
+        // se añade la lista de guest
+        public GuestListView getGuestListView() {
+                 return guestListView;
+        }
 }
-
-	

@@ -74,7 +74,7 @@ public class SchedulerIO implements Model
 		}
 	}
 
-
+        // aca tenemos geyEvents , obitne el event
 	public Vector<Vector<Object>> getEvents() throws Exception 
 	{
 		Vector<Vector<Object>> response = new Vector<Vector<Object>>();
@@ -134,5 +134,21 @@ public class SchedulerIO implements Model
     writer.flush();
     writer.close();
 }
+        // so añadimos el getGuest, paso 2 de GETLISTVIEW
+    public Vector<Vector<Object>> getGuests() throws Exception {
+    Vector<Vector<Object>> invitados = new Vector<>();
+    File file = new File(DIRECTORY, "guests.txt");
+    if (!file.exists()) return invitados;
 
+    BufferedReader reader = new BufferedReader(new FileReader(file));
+    String linea;
+    while ((linea = reader.readLine()) != null) {
+        String[] partes = linea.split(";");
+        Vector<Object> fila = new Vector<>();
+        for (String parte : partes) fila.add(parte);
+        invitados.add(fila);
+    }
+    reader.close();
+    return invitados;
+}
 	}
